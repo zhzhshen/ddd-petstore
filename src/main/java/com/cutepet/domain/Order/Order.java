@@ -5,12 +5,12 @@ import java.util.List;
 
 public class Order {
 
-    private String id;
+    private long id;
     private Date orderTime;
     private String userId;
     private List<Pet> pets;
 
-    public String getId() {
+    public long getId() {
         return id;
     }
 

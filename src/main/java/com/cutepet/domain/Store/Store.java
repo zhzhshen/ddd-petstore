@@ -11,8 +11,16 @@ public class Store {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    private String namee;
+    private String name;
 //    private List<Pet> petList;
+
+
+    public Store() {
+    }
+
+    public Store(String name) {
+        this.name = name;
+    }
 
     public long getId() {
         return id;
@@ -26,6 +34,6 @@ public class Store {
     public String toString() {
         return String.format(
                 "Store[id=%d, namee='%s']",
-                id, namee);
+                id, name);
     }
 }

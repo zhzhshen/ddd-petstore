@@ -4,11 +4,11 @@ import java.util.List;
 
 public class Cart {
 
-    private String id;
+    private long id;
     private List<Pet> petList;
 
     public String getId() {
-        return id;
+        long id;
     }
 
     public List<Pet> getPetList() {

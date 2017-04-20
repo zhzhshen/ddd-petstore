@@ -2,12 +2,12 @@ package com.cutepet.domain.User;
 
 public class User {
 
-    private String id;
+    private long id;
     private String name;
     private String phone;
     private String address;
 
-    public String getId() {
+    public long getId() {
         return id;
     }
 
