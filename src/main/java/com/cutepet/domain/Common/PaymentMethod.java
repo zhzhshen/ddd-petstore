@@ -1,4 +1,4 @@
-package com.cutepet.model.Common;
+package com.cutepet.domain.Common;
 
 public enum PaymentMethod {
     PAY_ON_DELIVERY,

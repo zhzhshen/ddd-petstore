@@ -1,4 +1,4 @@
-package com.cutepet.model.User;
+package com.cutepet.domain.User;
 
 import java.util.List;
 

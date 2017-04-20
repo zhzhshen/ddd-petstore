@@ -1,6 +1,6 @@
-package com.cutepet.model.Store;
+package com.cutepet.domain.Store;
 
-import com.cutepet.model.Common.PaymentMethod;
+import com.cutepet.domain.Common.PaymentMethod;
 
 import java.util.List;
 

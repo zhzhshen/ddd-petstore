@@ -1,4 +1,4 @@
-package com.cutepet.model.Order;
+package com.cutepet.domain.Order;
 
 import java.util.Date;
 import java.util.List;

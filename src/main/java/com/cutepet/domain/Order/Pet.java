@@ -1,6 +1,6 @@
-package com.cutepet.model.Order;
+package com.cutepet.domain.Order;
 
-import com.cutepet.model.Common.PaymentMethod;
+import com.cutepet.domain.Common.PaymentMethod;
 
 public class Pet {
 
