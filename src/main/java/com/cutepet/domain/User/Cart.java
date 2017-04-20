@@ -7,8 +7,8 @@ public class Cart {
     private long id;
     private List<Pet> petList;
 
-    public String getId() {
-        long id;
+    public long getId() {
+        return id;
     }
 
     public List<Pet> getPetList() {

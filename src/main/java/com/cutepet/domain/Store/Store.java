@@ -1,19 +1,15 @@
 package com.cutepet.domain.Store;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import java.util.List;
+
+import javax.persistence.*;
 
 @Entity
+@Table(name = "Store")
 public class Store {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     private String name;
-//    private List<Pet> petList;
-
 
     public Store() {
     }
