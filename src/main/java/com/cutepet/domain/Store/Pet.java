@@ -1,6 +1,7 @@
 package com.cutepet.domain.Store;
 
 import com.cutepet.domain.Common.PaymentMethod;
+import com.cutepet.domain.Common.PetType;
 
 import javax.persistence.*;
 import java.util.List;
@@ -15,16 +16,18 @@ public class Pet {
     private long storeId;
     private String name;
     private String color;
+    private PetType type;
     @ElementCollection
     private List<PaymentMethod> paymentMethods;
 
     public Pet() {
     }
 
-    public Pet(long storeId, String name, String color, List<PaymentMethod> paymentMethods) {
+    public Pet(long storeId, String name, String color, PetType type, List<PaymentMethod> paymentMethods) {
         this.storeId = storeId;
         this.name = name;
         this.color = color;
+        this.type = type;
         this.paymentMethods = paymentMethods;
     }
 
@@ -38,6 +41,10 @@ public class Pet {
 
     public String getName() {
         return name;
+    }
+
+    public PetType getType() {
+        return type;
     }
 
     public String getColor() {
