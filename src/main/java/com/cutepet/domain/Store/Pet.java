@@ -16,8 +16,10 @@ public class Pet {
     private long storeId;
     private String name;
     private String color;
+    @Enumerated(EnumType.STRING)
     private PetType type;
     @ElementCollection
+    @Enumerated(EnumType.STRING)
     private List<PaymentMethod> paymentMethods;
 
     public Pet() {
