@@ -13,7 +13,7 @@ public class Utils {
         BeanInfo info = Introspector.getBeanInfo(obj.getClass());
         for (PropertyDescriptor pd : info.getPropertyDescriptors()) {
             Method reader = pd.getReadMethod();
-            if (reader != null)
+            if (reader != null && !pd.getName().equals("class"))
                 result.put(pd.getName(), reader.invoke(obj));
         }
         return result;
