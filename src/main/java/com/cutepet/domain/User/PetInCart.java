@@ -1,17 +1,34 @@
 package com.cutepet.domain.User;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
+@Table(name = "PetInCart")
 public class PetInCart {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
     private Long storeId;
     private Long petId;
+    private Long cartId;
 
-    public PetInCart(Long storeId, Long petId) {
+    public PetInCart() {
+
+    }
+
+    public PetInCart(Long storeId, Long petId, Long cartId) {
         this.storeId = storeId;
         this.petId = petId;
+        this.cartId = cartId;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public Long getStoreId() {
@@ -30,12 +47,11 @@ public class PetInCart {
         this.petId = petId;
     }
 
-    @Id
-    public String getId() {
-        return String.valueOf(petId);
-    }
-    @Id
-    public void setId(String id) {
+    public Long getCartId() {
+        return cartId;
     }
 
+    public void setCartId(Long cartId) {
+        this.cartId = cartId;
+    }
 }
