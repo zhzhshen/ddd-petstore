@@ -1,16 +1,14 @@
 package com.cutepet.controller.Store;
 
-import com.cutepet.util.TestUtil;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import org.springframework.web.context.WebApplicationContext;
 
 import static org.hamcrest.Matchers.is;
 import static org.mockito.Mockito.when;
@@ -22,8 +20,6 @@ public class StoreControllerTest {
 
     private MockMvc mvc;
 
-    @Autowired
-    private WebApplicationContext context;
     @Mock
     private StoreController storeController;
 
@@ -41,7 +37,7 @@ public class StoreControllerTest {
         mvc.perform(get("/stores"))
             .andDo(print())
             .andExpect(status().isOk())
-            .andExpect(content().contentType(TestUtil.APPLICATION_JSON_UTF8))
+            .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8))
             .andExpect(jsonPath("$.data[0].name", is("Dogy")));
     }
 }
