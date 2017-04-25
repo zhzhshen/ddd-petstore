@@ -40,17 +40,17 @@ public class StoreStartupRunner implements CommandLineRunner {
         payOnline.add(PaymentMethod.PAY_ON_DELIVERY);
 
         id = storeRepository.findByName("Dogy").get(0).getId();
-        storePetRepository.save(new PetInStore(id, "Dog1", "Black", PetType.DOG_HUSKIE, payOnline));
-        storePetRepository.save(new PetInStore(id, "Dog2", "Yellow", PetType.DOG_OTHER, payOnline));
+        storePetRepository.save(new PetInStore("Dog1", "Black", PetType.DOG_HUSKIE, payOnline, id));
+        storePetRepository.save(new PetInStore("Dog2", "Yellow", PetType.DOG_OTHER, payOnline, id));
 
         id = storeRepository.findByName("Wolfy").get(0).getId();
-        storePetRepository.save(new PetInStore(id, "Dog3", "White", PetType.DOG_HUSKIE, payOnline));
+        storePetRepository.save(new PetInStore("Dog3", "White", PetType.DOG_HUSKIE, payOnline, id));
 
         id = storeRepository.findByName("Caty").get(0).getId();
-        storePetRepository.save(new PetInStore(id, "Cat1", "Black", PetType.CAT_OTHER, payOnline));
+        storePetRepository.save(new PetInStore("Cat1", "Black", PetType.CAT_OTHER, payOnline, id));
 
         id = storeRepository.findByName("Birdy").get(0).getId();
-        storePetRepository.save(new PetInStore(id, "Bird1", "Blue", PetType.BIRD_OTHER, payOnline));
+        storePetRepository.save(new PetInStore("Bird1", "Blue", PetType.BIRD_OTHER, payOnline, id));
 
     }
 }
