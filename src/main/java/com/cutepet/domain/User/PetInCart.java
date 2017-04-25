@@ -4,12 +4,12 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-public class Pet {
+public class PetInCart {
 
     private Long storeId;
     private Long petId;
 
-    public Pet(Long storeId, Long petId) {
+    public PetInCart(Long storeId, Long petId) {
         this.storeId = storeId;
         this.petId = petId;
     }

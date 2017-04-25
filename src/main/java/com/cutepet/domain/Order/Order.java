@@ -14,12 +14,12 @@ public class Order {
     private Date orderTime;
     private long userId;
     @ElementCollection
-    private List<Pet> pets;
+    private List<PetInOrder> pets;
 
     public Order() {
     }
 
-    public Order(Date orderTime, long userId, List<Pet> pets) {
+    public Order(Date orderTime, long userId, List<PetInOrder> pets) {
         this.orderTime = orderTime;
         this.userId = userId;
         this.pets = pets;
@@ -37,7 +37,7 @@ public class Order {
         return userId;
     }
 
-    public List<Pet> getPets() {
+    public List<PetInOrder> getPets() {
         return pets;
     }
 }
