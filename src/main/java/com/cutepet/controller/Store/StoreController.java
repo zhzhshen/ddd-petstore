@@ -1,6 +1,6 @@
 package com.cutepet.controller.Store;
 
-import com.cutepet.repositories.Store.PetRepository;
+import com.cutepet.repositories.Store.PetInStoreRepository;
 import com.cutepet.repositories.Store.StoreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,7 +18,7 @@ public class StoreController {
     @Autowired
     StoreRepository storeRepository;
     @Autowired
-    PetRepository petRepository;
+    PetInStoreRepository petRepository;
 
     @RequestMapping(value = "", method = RequestMethod.GET)
     public Map<String, Object> getAllStores() {

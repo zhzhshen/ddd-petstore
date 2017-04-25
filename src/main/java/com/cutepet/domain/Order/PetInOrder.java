@@ -3,23 +3,39 @@ package com.cutepet.domain.Order;
 import com.cutepet.domain.Common.PaymentMethod;
 import com.cutepet.domain.Common.PetType;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
+@Table(name = "PetInOrder")
 public class PetInOrder {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
     private String name;
     private String color;
     private PetType type;
     private PaymentMethod paymentMethod;
+    private Long orderId;
 
-    public PetInOrder(String name, String color, PetType type, PaymentMethod paymentMethod) {
+    public PetInOrder() {
+
+    }
+
+    public PetInOrder(String name, String color, PetType type, PaymentMethod paymentMethod, Long orderId) {
         this.name = name;
         this.color = color;
         this.type = type;
         this.paymentMethod = paymentMethod;
+        this.orderId = orderId;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -54,12 +70,11 @@ public class PetInOrder {
         this.paymentMethod = paymentMethod;
     }
 
-    @Id
-    public String getId() {
-        return name;
-    }
-    @Id
-    public void setId(String id) {
+    public Long getOrderId() {
+        return orderId;
     }
 
+    public void setOrderId(Long orderId) {
+        this.orderId = orderId;
+    }
 }

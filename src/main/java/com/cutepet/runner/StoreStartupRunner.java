@@ -4,8 +4,9 @@ import com.cutepet.domain.Common.PaymentMethod;
 import com.cutepet.domain.Common.PetType;
 import com.cutepet.domain.Store.PetInStore;
 import com.cutepet.domain.Store.Store;
-import com.cutepet.repositories.Store.PetRepository;
+import com.cutepet.repositories.Store.PetInStoreRepository;
 import com.cutepet.repositories.Store.StoreRepository;
+import com.google.common.collect.Lists;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -21,17 +22,17 @@ public class StoreStartupRunner implements CommandLineRunner {
     StoreRepository storeRepository;
 
     @Autowired
-    PetRepository storePetRepository;
+    PetInStoreRepository storePetRepository;
 
     @Override
     public void run(String...args) throws Exception {
 
         // Create some stores
-        storeRepository.save(new Store("Dogy"));
-        storeRepository.save(new Store("Wolfy"));
-        storeRepository.save(new Store("Caty"));
-        storeRepository.save(new Store("Birdy"));
-        storeRepository.save(new Store("Sheepy"));
+        storeRepository.save(Lists.newArrayList(new Store("Dogy"),
+                new Store("Wolfy"),
+                new Store("Caty"),
+                new Store("Birdy"),
+                new Store("Sheepy")));
 
         // Put some pets in store
         long id;
