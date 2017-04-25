@@ -13,7 +13,6 @@ public class PetInStore {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    private long storeId;
     private String name;
     private String color;
     @Enumerated(EnumType.STRING)
@@ -21,24 +20,21 @@ public class PetInStore {
     @ElementCollection
     @Enumerated(EnumType.STRING)
     private List<PaymentMethod> paymentMethods;
+    private Long storeId;
 
     public PetInStore() {
     }
 
-    public PetInStore(long storeId, String name, String color, PetType type, List<PaymentMethod> paymentMethods) {
-        this.storeId = storeId;
+    public PetInStore(String name, String color, PetType type, List<PaymentMethod> paymentMethods, Long storeId) {
         this.name = name;
         this.color = color;
         this.type = type;
         this.paymentMethods = paymentMethods;
+        this.storeId = storeId;
     }
 
     public long getId() {
         return id;
-    }
-
-    public long getStoreId() {
-        return storeId;
     }
 
     public String getName() {
@@ -55,5 +51,9 @@ public class PetInStore {
 
     public List<PaymentMethod> getPaymentMethods() {
         return paymentMethods;
+    }
+
+    public Long getStoreId() {
+        return storeId;
     }
 }
