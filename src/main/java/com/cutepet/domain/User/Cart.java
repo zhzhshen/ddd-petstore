@@ -12,7 +12,7 @@ public class Cart {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     @ElementCollection
-    private List<Pet> petList;
+    private List<PetInCart> petList;
     private long userId;
 
     public Cart() {
@@ -27,15 +27,15 @@ public class Cart {
         return id;
     }
 
-    public List<Pet> getPetList() {
+    public List<PetInCart> getPetList() {
         return petList;
     }
 
-    public void addPet(Pet pet) {
+    public void addPet(PetInCart pet) {
         this.petList.add(pet);
     }
 
-    public void removePet(Pet pet) {
+    public void removePet(PetInCart pet) {
         this.petList.remove(pet);
     }
 

@@ -8,7 +8,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "Store_Pet")
-public class Pet {
+public class PetInStore {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -22,10 +22,10 @@ public class Pet {
     @Enumerated(EnumType.STRING)
     private List<PaymentMethod> paymentMethods;
 
-    public Pet() {
+    public PetInStore() {
     }
 
-    public Pet(long storeId, String name, String color, PetType type, List<PaymentMethod> paymentMethods) {
+    public PetInStore(long storeId, String name, String color, PetType type, List<PaymentMethod> paymentMethods) {
         this.storeId = storeId;
         this.name = name;
         this.color = color;
