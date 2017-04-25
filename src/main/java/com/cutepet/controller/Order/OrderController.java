@@ -8,10 +8,7 @@ import com.cutepet.repositories.Order.PetInOrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @RestController
 @RequestMapping("/orders")
@@ -37,7 +34,18 @@ public class OrderController {
     public Map<String, Object> getAllOrders() {
         Map<String, Object> ret = new HashMap<>();
 
-        ret.put("data", orderRepository.findAll());
+        List<Map<String, Object>> orderList = new ArrayList<>();
+        orderRepository.findAll().forEach((order -> {
+            try {
+                List<PetInOrder> pets = petRepository.findByOrderId(order.getId());
+                Map<String, Object> orderMap = Utils.introspect(order);
+                orderMap.put("pets", pets);
+                orderList.add(orderMap);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }));
+        ret.put("data", orderList);
 
         return ret;
     }
@@ -49,7 +57,8 @@ public class OrderController {
         List<PetInOrder> pets = petRepository.findByOrderId(order_id);
         Map<String, Object> orderMap = null;
         try {
-            orderMap = Utils.introspect(orderRepository.findById(order_id));
+            orderMap = Utils.introspect(orderRepository.findById(order_id).get(0));
+            orderMap.put("pets", pets);
         } catch (Exception e) {
             e.printStackTrace();
         }
