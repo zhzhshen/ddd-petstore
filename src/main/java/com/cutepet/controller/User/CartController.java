@@ -1,5 +1,9 @@
 package com.cutepet.controller.User;
 
+import com.cutepet.domain.User.PetInCart;
+import com.cutepet.repositories.User.CartRepository;
+import com.cutepet.repositories.User.PetInCartRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -12,6 +16,10 @@ import java.util.Map;
 @RequestMapping("/cart")
 public class CartController {
 
+    @Autowired
+    CartRepository cartRepository;
+    @Autowired
+    PetInCartRepository petRepository;
 
     @RequestMapping(value = "", method = RequestMethod.DELETE)
     public Map<String, Object> cleanUpCart() {
