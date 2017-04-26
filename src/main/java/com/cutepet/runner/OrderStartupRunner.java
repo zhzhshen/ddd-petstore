@@ -25,18 +25,19 @@ public class OrderStartupRunner implements CommandLineRunner {
     @Override
     public void run(String...args) throws Exception {
 
+        List<PetInOrder> petList1 = ImmutableList.of(
+                new PetInOrder("Dog1", "Brown", PetType.DOG_OTHER, PaymentMethod.PAY_ON_DELIVERY),
+                new PetInOrder("Cat1", "White", PetType.CAT_OTHER, PaymentMethod.PAY_ON_LINE)
+        );
+        List<PetInOrder> petList2 = ImmutableList.of(
+                new PetInOrder("Bird1", "Yellow", PetType.BIRD_OTHER, PaymentMethod.PAY_ON_LINE)
+        );
+
         // Create some orders
         orderRepository.save(ImmutableList.of(
-                new Order(dateFormat.parse("2017-04-04T12:08:56.235+0800"), 1L),
-                new Order(dateFormat.parse("2017-04-24T15:46:25.462+0800"), 2L)
+                new Order(dateFormat.parse("2017-04-04T12:08:56.235+0800"), 1L, petList1),
+                new Order(dateFormat.parse("2017-04-24T15:46:25.462+0800"), 2L, petList2)
         ));
 
-        // Create some pets in order
-//        List<PetInOrder> pets =
-//        petRepository.save(ImmutableList.of(
-//                new PetInOrder("Dog1", "Brown", PetType.DOG_OTHER, PaymentMethod.PAY_ON_DELIVERY),
-//                new PetInOrder("Cat1", "White", PetType.CAT_OTHER, PaymentMethod.PAY_ON_LINE),
-//                new PetInOrder("Bird1", "Yellow", PetType.BIRD_OTHER, PaymentMethod.PAY_ON_LINE)
-//        ));
     }
 }

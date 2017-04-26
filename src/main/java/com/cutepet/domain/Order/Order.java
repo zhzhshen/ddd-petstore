@@ -16,7 +16,6 @@ public class Order {
     private Date orderTime;
     @Column(name = "userId")
     private Long userId;
-
     @ElementCollection
     @CollectionTable(
             name = "ORDER_PETS",
@@ -27,9 +26,10 @@ public class Order {
     public Order() {
     }
 
-    public Order(Date orderTime, Long userId) {
+    public Order(Date orderTime, Long userId, List<PetInOrder> pets) {
         this.orderTime = orderTime;
         this.userId = userId;
+        this.pets = pets;
     }
 
     public long getId() {
@@ -54,5 +54,9 @@ public class Order {
 
     public void setUserId(Long userId) {
         this.userId = userId;
+    }
+
+    public List<PetInOrder> getPets() {
+        return pets;
     }
 }
