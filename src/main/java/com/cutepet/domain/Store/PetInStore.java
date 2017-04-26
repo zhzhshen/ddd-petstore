@@ -19,6 +19,10 @@ public class PetInStore {
     private PetType type;
     @ElementCollection
     @Enumerated(EnumType.STRING)
+    @CollectionTable(
+            name = "PAYMENT_METHOD",
+            joinColumns = @JoinColumn(name = "PET_ID")
+    )
     private List<PaymentMethod> paymentMethods;
     private Long storeId;
 

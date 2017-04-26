@@ -2,6 +2,7 @@ package com.cutepet.domain.Order;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "OrderTable")
@@ -15,6 +16,13 @@ public class Order {
     private Date orderTime;
     @Column(name = "userId")
     private Long userId;
+
+    @ElementCollection
+    @CollectionTable(
+            name = "ORDER_PETS",
+            joinColumns = @JoinColumn(name = "ORDER_ID")
+    )
+    private List<PetInOrder> pets;
 
     public Order() {
     }
