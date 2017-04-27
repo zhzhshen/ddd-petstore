@@ -46,7 +46,7 @@ public class OrderControllerTest {
             Map<String, Object> body = (HashMap)invocationOnMock.getArguments()[0];
             Map<String, String> orderData = (HashMap)body.get("data");
             Long userId = Long.parseLong(orderData.get("userId"));
-            orders.add(new Order(new Date(), userId));
+            orders.add(new Order(new Date(), userId, new ArrayList()));
             return ImmutableMap.of("data", ImmutableMap.of("status", "OK"));
         });
         when(orderController.getAllOrders()).thenAnswer(invocationOnMock -> ImmutableMap.of("data", orders));
