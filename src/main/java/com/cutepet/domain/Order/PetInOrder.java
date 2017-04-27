@@ -30,31 +30,15 @@ public class PetInOrder {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public String getColor() {
         return color;
-    }
-
-    public void setColor(String color) {
-        this.color = color;
     }
 
     public PetType getType() {
         return type;
     }
 
-    public void setType(PetType type) {
-        this.type = type;
-    }
-
     public PaymentMethod getPaymentMethod() {
         return paymentMethod;
-    }
-
-    public void setPaymentMethod(PaymentMethod paymentMethod) {
-        this.paymentMethod = paymentMethod;
     }
 }

@@ -5,6 +5,7 @@ import com.cutepet.domain.Common.PetType;
 import com.cutepet.domain.Common.Utils;
 import com.cutepet.domain.Order.Order;
 import com.cutepet.domain.Order.PetInOrder;
+import com.cutepet.domain.Order.PetLover;
 import com.cutepet.repositories.Order.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -22,18 +23,20 @@ public class OrderController {
     public Map<String, Object> createOrder(@RequestBody Map<String, Object> body) {
         Map<String, Object> ret = new HashMap<>();
 
-        Map<String, Object> orderData = (HashMap)body.get("data");
+        Map<String, Object> orderData = (Map)body.get("data");
         Long userId = (Long) orderData.get("userId");
 
         List<PetInOrder> pets = new ArrayList<>();
         List<Map<String, String> > petValues = (List) orderData.get("pets");
-        petValues.forEach((pet) ->
-                pets.add(new PetInOrder(pet.get("name"),
-                        pet.get("color"),
-                        PetType.valueOf(pet.get("type")),
-                        PaymentMethod.valueOf(pet.get("payment"))))
+        petValues.forEach((petMap) ->
+                pets.add(new PetInOrder(petMap.get("name"),
+                        petMap.get("color"),
+                        PetType.valueOf(petMap.get("type")),
+                        PaymentMethod.valueOf(petMap.get("payment"))))
         );
-        orderRepository.save(new Order(new Date(), userId, pets));
+        Map<String, String> petLoverMap = (Map) orderData.get("petLover");
+        PetLover petLover = new PetLover(petLoverMap.get("name"), petLoverMap.get("phoneNum"));
+        orderRepository.save(new Order(new Date(), userId, pets, petLover));
 
         return ret;
     }
