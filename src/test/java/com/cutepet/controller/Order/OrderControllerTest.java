@@ -1,6 +1,7 @@
 package com.cutepet.controller.Order;
 
 import com.cutepet.domain.Order.Order;
+import com.cutepet.domain.Order.PetLover;
 import com.google.common.collect.ImmutableMap;
 import org.junit.Before;
 import org.junit.Test;
@@ -46,7 +47,7 @@ public class OrderControllerTest {
             Map<String, Object> body = (HashMap)invocationOnMock.getArguments()[0];
             Map<String, String> orderData = (HashMap)body.get("data");
             Long userId = Long.parseLong(orderData.get("userId"));
-            orders.add(new Order(new Date(), userId, new ArrayList()));
+            orders.add(new Order(new Date(), userId, new ArrayList(), new PetLover()));
             return ImmutableMap.of("data", ImmutableMap.of("status", "OK"));
         });
         when(orderController.getAllOrders()).thenAnswer(invocationOnMock -> ImmutableMap.of("data", orders));
@@ -54,10 +55,12 @@ public class OrderControllerTest {
         mvc.perform(post("/orders")
                 .contentType(MediaType.APPLICATION_JSON_UTF8)
                 .content("{\"data\":{\"userId\":\"1\"}}"))
+                .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8))
                 .andExpect(jsonPath("$.data.status", is("OK")));
         mvc.perform(get("/orders"))
+                .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8))
                 .andExpect(jsonPath("$.data[0].userId", is(1)))

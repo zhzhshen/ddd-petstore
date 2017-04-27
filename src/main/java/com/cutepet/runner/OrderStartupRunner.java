@@ -4,6 +4,7 @@ import com.cutepet.domain.Common.PaymentMethod;
 import com.cutepet.domain.Common.PetType;
 import com.cutepet.domain.Order.Order;
 import com.cutepet.domain.Order.PetInOrder;
+import com.cutepet.domain.Order.PetLover;
 import com.cutepet.repositories.Order.OrderRepository;
 import com.google.common.collect.ImmutableList;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,10 +34,13 @@ public class OrderStartupRunner implements CommandLineRunner {
                 new PetInOrder("Bird1", "Yellow", PetType.BIRD_OTHER, PaymentMethod.PAY_ON_LINE)
         );
 
+        PetLover petLover1 = new PetLover("John Smith", "12345678");
+        PetLover petLover2 = new PetLover("Tom Mate", "12345678");
+
         // Create some orders
         orderRepository.save(ImmutableList.of(
-                new Order(dateFormat.parse("2017-04-04T12:08:56.235+0800"), 1L, petList1),
-                new Order(dateFormat.parse("2017-04-24T15:46:25.462+0800"), 2L, petList2)
+                new Order(dateFormat.parse("2017-04-04T12:08:56.235+0800"), 1L, petList1, petLover1),
+                new Order(dateFormat.parse("2017-04-24T15:46:25.462+0800"), 2L, petList2, petLover2)
         ));
 
     }

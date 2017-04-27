@@ -22,14 +22,21 @@ public class Order {
             joinColumns = @JoinColumn(name = "ORDER_ID")
     )
     private List<PetInOrder> pets;
+    @Embedded
+    @AttributeOverrides( {
+            @AttributeOverride(name = "name", column = @Column(name = "client_name")),
+            @AttributeOverride(name = "phoneNum", column = @Column(name = "client_phone_num"))
+    })
+    private PetLover petLover;
 
     public Order() {
     }
 
-    public Order(Date orderTime, Long userId, List<PetInOrder> pets) {
+    public Order(Date orderTime, Long userId, List<PetInOrder> pets, PetLover petLover) {
         this.orderTime = orderTime;
         this.userId = userId;
         this.pets = pets;
+        this.petLover = petLover;
     }
 
     public long getId() {
@@ -44,19 +51,15 @@ public class Order {
         return orderTime;
     }
 
-    public void setOrderTime(Date orderTime) {
-        this.orderTime = orderTime;
-    }
-
     public Long getUserId() {
         return userId;
     }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
-    }
-
     public List<PetInOrder> getPets() {
         return pets;
+    }
+
+    public PetLover getPetLover() {
+        return petLover;
     }
 }
