@@ -3,9 +3,9 @@ package com.cutepet.controller.order;
 import com.cutepet.persistence.common.PaymentMethod;
 import com.cutepet.persistence.common.PetType;
 import com.cutepet.persistence.common.Utils;
+import com.cutepet.persistence.entity.order.Customer;
 import com.cutepet.persistence.entity.order.Order;
 import com.cutepet.persistence.entity.order.PetInOrder;
-import com.cutepet.persistence.entity.order.PetLover;
 import com.cutepet.persistence.repositories.order.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -34,9 +34,9 @@ public class OrderController {
                         PetType.valueOf(petMap.get("type")),
                         PaymentMethod.valueOf(petMap.get("payment"))))
         );
-        Map<String, String> petLoverMap = (Map) orderData.get("petLover");
-        PetLover petLover = new PetLover(petLoverMap.get("name"), petLoverMap.get("phoneNum"));
-        orderRepository.save(new Order(new Date(), userId, pets, petLover));
+        Map<String, String> petLoverMap = (Map) orderData.get("customer");
+        Customer customer = new Customer(petLoverMap.get("name"), petLoverMap.get("phoneNum"));
+        orderRepository.save(new Order(new Date(), userId, pets, customer));
 
         return ret;
     }

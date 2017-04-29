@@ -28,8 +28,6 @@ public class Store {
 
     @Override
     public String toString() {
-        return String.format(
-                "Store[id=%d, namee='%s']",
-                id, name);
+        return String.format("Store[id=%d, namee='%s']", id, name);
     }
 }

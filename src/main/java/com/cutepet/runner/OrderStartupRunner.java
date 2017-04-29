@@ -2,9 +2,9 @@ package com.cutepet.runner;
 
 import com.cutepet.persistence.common.PaymentMethod;
 import com.cutepet.persistence.common.PetType;
+import com.cutepet.persistence.entity.order.Customer;
 import com.cutepet.persistence.entity.order.Order;
 import com.cutepet.persistence.entity.order.PetInOrder;
-import com.cutepet.persistence.entity.order.PetLover;
 import com.cutepet.persistence.repositories.order.OrderRepository;
 import com.google.common.collect.ImmutableList;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,13 +34,13 @@ public class OrderStartupRunner implements CommandLineRunner {
                 new PetInOrder("Bird1", "Yellow", PetType.BIRD_OTHER, PaymentMethod.PAY_ON_LINE)
         );
 
-        PetLover petLover1 = new PetLover("John Smith", "12345678");
-        PetLover petLover2 = new PetLover("Tom Mate", "12345678");
+        Customer customer1 = new Customer("John Smith", "12345678");
+        Customer customer2 = new Customer("Tom Mate", "12345678");
 
         // Create some orders
         orderRepository.save(ImmutableList.of(
-                new Order(dateFormat.parse("2017-04-04T12:08:56.235+0800"), 1L, petList1, petLover1),
-                new Order(dateFormat.parse("2017-04-24T15:46:25.462+0800"), 2L, petList2, petLover2)
+                new Order(dateFormat.parse("2017-04-04T12:08:56.235+0800"), 1L, petList1, customer1),
+                new Order(dateFormat.parse("2017-04-24T15:46:25.462+0800"), 2L, petList2, customer2)
         ));
 
     }
