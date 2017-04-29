@@ -6,7 +6,7 @@ import com.cutepet.persistence.common.PetType;
 import javax.persistence.*;
 
 @Embeddable
-public class PetInOrder {
+public class PetEntity {
 
     private String name;
     private String color;
@@ -15,11 +15,11 @@ public class PetInOrder {
     @Enumerated(EnumType.STRING)
     private PaymentMethod paymentMethod;
 
-    public PetInOrder() {
+    public PetEntity() {
 
     }
 
-    public PetInOrder(String name, String color, PetType type, PaymentMethod paymentMethod) {
+    public PetEntity(String name, String color, PetType type, PaymentMethod paymentMethod) {
         this.name = name;
         this.color = color;
         this.type = type;

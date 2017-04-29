@@ -1,12 +1,12 @@
 package com.cutepet.persistence.repositories.store;
 
-import com.cutepet.persistence.entity.store.PetInStore;
+import com.cutepet.persistence.entity.store.PetEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface PetInStoreRepository extends JpaRepository<PetInStore, Long> {
+public interface PetInStoreRepository extends JpaRepository<PetEntity, Long> {
 
-    List<PetInStore> findByStoreId(long storeId);
-    PetInStore findByIdAndStoreId(long id, long storeId);
+    List<PetEntity> findByStoreId(long storeId);
+    PetEntity findByIdAndStoreId(long id, long storeId);
 }

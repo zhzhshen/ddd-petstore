@@ -6,7 +6,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "OrderTable")
-public class Order {
+public class OrderEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -21,18 +21,18 @@ public class Order {
             name = "ORDER_PETS",
             joinColumns = @JoinColumn(name = "ORDER_ID")
     )
-    private List<PetInOrder> pets;
+    private List<PetEntity> pets;
     @Embedded
     @AttributeOverrides( {
             @AttributeOverride(name = "name", column = @Column(name = "client_name")),
             @AttributeOverride(name = "phoneNum", column = @Column(name = "client_phone_num"))
     })
-    private Customer customer;
+    private CustomerEntity customer;
 
-    public Order() {
+    public OrderEntity() {
     }
 
-    public Order(Date orderTime, Long userId, List<PetInOrder> pets, Customer customer) {
+    public OrderEntity(Date orderTime, Long userId, List<PetEntity> pets, CustomerEntity customer) {
         this.orderTime = orderTime;
         this.userId = userId;
         this.pets = pets;
@@ -55,11 +55,11 @@ public class Order {
         return userId;
     }
 
-    public List<PetInOrder> getPets() {
+    public List<PetEntity> getPets() {
         return pets;
     }
 
-    public Customer getCustomer() {
+    public CustomerEntity getCustomer() {
         return customer;
     }
 }
