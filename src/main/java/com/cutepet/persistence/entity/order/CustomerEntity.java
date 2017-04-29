@@ -3,16 +3,16 @@ package com.cutepet.persistence.entity.order;
 import javax.persistence.Embeddable;
 
 @Embeddable
-public class Customer {
+public class CustomerEntity {
 
     private String name;
     private String phoneNum;
 
-    public Customer() {
+    public CustomerEntity() {
 
     }
 
-    public Customer(String name, String phoneNum) {
+    public CustomerEntity(String name, String phoneNum) {
         this.name = name;
         this.phoneNum = phoneNum;
     }

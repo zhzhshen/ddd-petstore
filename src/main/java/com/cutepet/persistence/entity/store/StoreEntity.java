@@ -3,18 +3,18 @@ package com.cutepet.persistence.entity.store;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Store")
-public class Store {
+@Table(name = "StoreEntity")
+public class StoreEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     private String name;
 
-    public Store() {
+    public StoreEntity() {
     }
 
-    public Store(String name) {
+    public StoreEntity(String name) {
         this.name = name;
     }
 
@@ -28,6 +28,6 @@ public class Store {
 
     @Override
     public String toString() {
-        return String.format("Store[id=%d, namee='%s']", id, name);
+        return String.format("StoreEntity[id=%d, namee='%s']", id, name);
     }
 }

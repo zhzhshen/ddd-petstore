@@ -2,8 +2,8 @@ package com.cutepet.runner;
 
 import com.cutepet.persistence.common.PaymentMethod;
 import com.cutepet.persistence.common.PetType;
-import com.cutepet.persistence.entity.store.PetInStore;
-import com.cutepet.persistence.entity.store.Store;
+import com.cutepet.persistence.entity.store.PetEntity;
+import com.cutepet.persistence.entity.store.StoreEntity;
 import com.cutepet.persistence.repositories.store.PetInStoreRepository;
 import com.cutepet.persistence.repositories.store.StoreRepository;
 import com.google.common.collect.ImmutableList;
@@ -29,11 +29,11 @@ public class StoreStartupRunner implements CommandLineRunner {
 
         // Create some stores
         storeRepository.save(ImmutableList.of(
-                new Store("Dogy"),
-                new Store("Wolfy"),
-                new Store("Caty"),
-                new Store("Birdy"),
-                new Store("Sheepy")
+                new StoreEntity("Dogy"),
+                new StoreEntity("Wolfy"),
+                new StoreEntity("Caty"),
+                new StoreEntity("Birdy"),
+                new StoreEntity("Sheepy")
         ));
 
         // Put some pets in store
@@ -43,23 +43,23 @@ public class StoreStartupRunner implements CommandLineRunner {
 
         id = storeRepository.findByName("Dogy").get(0).getId();
         storePetRepository.save(ImmutableList.of(
-                new PetInStore("Dog1", "Black", PetType.DOG_HUSKIE, payOnline, id),
-                new PetInStore("Dog2", "Yellow", PetType.DOG_OTHER, payOnline, id)
+                new PetEntity("Dog1", "Black", PetType.DOG_HUSKIE, payOnline, id),
+                new PetEntity("Dog2", "Yellow", PetType.DOG_OTHER, payOnline, id)
         ));
 
         id = storeRepository.findByName("Wolfy").get(0).getId();
         storePetRepository.save(ImmutableList.of(
-                new PetInStore("Dog3", "White", PetType.DOG_HUSKIE, payOnline, id)
+                new PetEntity("Dog3", "White", PetType.DOG_HUSKIE, payOnline, id)
         ));
 
         id = storeRepository.findByName("Caty").get(0).getId();
         storePetRepository.save(ImmutableList.of(
-                new PetInStore("Cat1", "Black", PetType.CAT_OTHER, payOnline, id)
+                new PetEntity("Cat1", "Black", PetType.CAT_OTHER, payOnline, id)
         ));
 
         id = storeRepository.findByName("Birdy").get(0).getId();
         storePetRepository.save(ImmutableList.of(
-                new PetInStore("Bird1", "Blue", PetType.BIRD_OTHER, payOnline, id)
+                new PetEntity("Bird1", "Blue", PetType.BIRD_OTHER, payOnline, id)
         ));
 
     }

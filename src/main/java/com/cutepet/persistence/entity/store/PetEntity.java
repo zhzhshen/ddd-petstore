@@ -7,8 +7,8 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "PetInStore")
-public class PetInStore {
+@Table(name = "PetEntity")
+public class PetEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -26,10 +26,10 @@ public class PetInStore {
     private List<PaymentMethod> paymentMethods;
     private Long storeId;
 
-    public PetInStore() {
+    public PetEntity() {
     }
 
-    public PetInStore(String name, String color, PetType type, List<PaymentMethod> paymentMethods, Long storeId) {
+    public PetEntity(String name, String color, PetType type, List<PaymentMethod> paymentMethods, Long storeId) {
         this.name = name;
         this.color = color;
         this.type = type;
