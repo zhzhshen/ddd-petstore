@@ -1,7 +1,7 @@
 package com.cutepet.controller.order;
 
+import com.cutepet.persistence.entity.order.Customer;
 import com.cutepet.persistence.entity.order.Order;
-import com.cutepet.persistence.entity.order.PetLover;
 import com.google.common.collect.ImmutableMap;
 import org.junit.Before;
 import org.junit.Test;
@@ -47,7 +47,7 @@ public class OrderControllerTest {
             Map<String, Object> body = (HashMap)invocationOnMock.getArguments()[0];
             Map<String, String> orderData = (HashMap)body.get("data");
             Long userId = Long.parseLong(orderData.get("userId"));
-            orders.add(new Order(new Date(), userId, new ArrayList(), new PetLover()));
+            orders.add(new Order(new Date(), userId, new ArrayList(), new Customer()));
             return ImmutableMap.of("data", ImmutableMap.of("status", "OK"));
         });
         when(orderController.getAllOrders()).thenAnswer(invocationOnMock -> ImmutableMap.of("data", orders));

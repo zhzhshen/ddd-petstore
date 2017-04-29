@@ -27,16 +27,16 @@ public class Order {
             @AttributeOverride(name = "name", column = @Column(name = "client_name")),
             @AttributeOverride(name = "phoneNum", column = @Column(name = "client_phone_num"))
     })
-    private PetLover petLover;
+    private Customer customer;
 
     public Order() {
     }
 
-    public Order(Date orderTime, Long userId, List<PetInOrder> pets, PetLover petLover) {
+    public Order(Date orderTime, Long userId, List<PetInOrder> pets, Customer customer) {
         this.orderTime = orderTime;
         this.userId = userId;
         this.pets = pets;
-        this.petLover = petLover;
+        this.customer = customer;
     }
 
     public long getId() {
@@ -59,7 +59,7 @@ public class Order {
         return pets;
     }
 
-    public PetLover getPetLover() {
-        return petLover;
+    public Customer getCustomer() {
+        return customer;
     }
 }
