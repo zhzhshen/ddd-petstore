@@ -1,7 +1,7 @@
-package com.cutepet.domain.Order;
+package com.cutepet.persistence.entity.order;
 
-import com.cutepet.domain.Common.PaymentMethod;
-import com.cutepet.domain.Common.PetType;
+import com.cutepet.persistence.common.PaymentMethod;
+import com.cutepet.persistence.common.PetType;
 
 import javax.persistence.*;
 

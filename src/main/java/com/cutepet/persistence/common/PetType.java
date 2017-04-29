@@ -1,4 +1,4 @@
-package com.cutepet.domain.Common;
+package com.cutepet.persistence.common;
 
 public enum PetType {
     DOG_HUSKIE,

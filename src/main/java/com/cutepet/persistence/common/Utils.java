@@ -1,4 +1,4 @@
-package com.cutepet.domain.Common;
+package com.cutepet.persistence.common;
 
 import java.beans.BeanInfo;
 import java.beans.Introspector;

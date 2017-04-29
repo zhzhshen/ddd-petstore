@@ -1,7 +1,7 @@
-package com.cutepet.controller.Order;
+package com.cutepet.controller.order;
 
-import com.cutepet.domain.Order.Order;
-import com.cutepet.domain.Order.PetLover;
+import com.cutepet.persistence.entity.order.Order;
+import com.cutepet.persistence.entity.order.PetLover;
 import com.google.common.collect.ImmutableMap;
 import org.junit.Before;
 import org.junit.Test;

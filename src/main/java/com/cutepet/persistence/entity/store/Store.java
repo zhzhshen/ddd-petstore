@@ -1,4 +1,4 @@
-package com.cutepet.domain.Store;
+package com.cutepet.persistence.entity.store;
 
 import javax.persistence.*;
 
