@@ -1,6 +1,6 @@
-package com.cutepet.repositories.Store;
+package com.cutepet.persistence.repositories.store;
 
-import com.cutepet.domain.Store.PetInStore;
+import com.cutepet.persistence.entity.store.PetInStore;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

@@ -1,7 +1,7 @@
-package com.cutepet.controller.Store;
+package com.cutepet.controller.store;
 
-import com.cutepet.repositories.Store.PetInStoreRepository;
-import com.cutepet.repositories.Store.StoreRepository;
+import com.cutepet.persistence.repositories.store.PetInStoreRepository;
+import com.cutepet.persistence.repositories.store.StoreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;

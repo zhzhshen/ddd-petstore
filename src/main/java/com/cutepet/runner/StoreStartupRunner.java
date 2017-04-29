@@ -1,11 +1,11 @@
 package com.cutepet.runner;
 
-import com.cutepet.domain.Common.PaymentMethod;
-import com.cutepet.domain.Common.PetType;
-import com.cutepet.domain.Store.PetInStore;
-import com.cutepet.domain.Store.Store;
-import com.cutepet.repositories.Store.PetInStoreRepository;
-import com.cutepet.repositories.Store.StoreRepository;
+import com.cutepet.persistence.common.PaymentMethod;
+import com.cutepet.persistence.common.PetType;
+import com.cutepet.persistence.entity.store.PetInStore;
+import com.cutepet.persistence.entity.store.Store;
+import com.cutepet.persistence.repositories.store.PetInStoreRepository;
+import com.cutepet.persistence.repositories.store.StoreRepository;
 import com.google.common.collect.ImmutableList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;

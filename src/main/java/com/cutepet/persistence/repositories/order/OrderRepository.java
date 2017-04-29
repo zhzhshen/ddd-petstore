@@ -1,6 +1,6 @@
-package com.cutepet.repositories.Order;
+package com.cutepet.persistence.repositories.order;
 
-import com.cutepet.domain.Order.Order;
+import com.cutepet.persistence.entity.order.Order;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

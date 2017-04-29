@@ -1,4 +1,4 @@
-package com.cutepet.domain.Order;
+package com.cutepet.persistence.entity.order;
 
 import javax.persistence.*;
 import java.util.Date;
