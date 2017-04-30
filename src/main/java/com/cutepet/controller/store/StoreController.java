@@ -1,8 +1,6 @@
 package com.cutepet.controller.store;
 
-import com.cutepet.persistence.repositories.store.PetInStoreRepository;
-import com.cutepet.persistence.repositories.store.StoreRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.cutepet.domain.store.Store;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -15,16 +13,11 @@ import java.util.Map;
 @RequestMapping("/stores")
 public class StoreController {
 
-    @Autowired
-    StoreRepository storeRepository;
-    @Autowired
-    PetInStoreRepository petRepository;
-
     @RequestMapping(value = "", method = RequestMethod.GET)
     public Map<String, Object> getAllStores() {
         Map<String, Object> ret = new HashMap<>();
 
-        ret.put("data", storeRepository.findAll());
+        ret.put("data", Store.getAllStores());
 
         return ret;
     }
@@ -33,7 +26,8 @@ public class StoreController {
     public Map<String, Object> getAllPetInStore(@PathVariable long store_id) {
         Map<String, Object> ret = new HashMap<>();
 
-        ret.put("data", petRepository.findByStoreId(store_id));
+        Store store = new Store(store_id);
+        ret.put("data", store.getPets());
 
         return ret;
     }
@@ -42,7 +36,8 @@ public class StoreController {
     public Map<String, Object> getAllPetInStore(@PathVariable long store_id, @PathVariable long pet_id) {
         Map<String, Object> ret = new HashMap<>();
 
-        ret.put("data", petRepository.findByIdAndStoreId(pet_id, store_id));
+        Store store = new Store(store_id);
+        ret.put("data", store.getPet(pet_id));
 
         return ret;
     }
