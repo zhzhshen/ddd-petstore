@@ -1,6 +1,5 @@
 package com.cutepet.domain.store;
 
-import com.cutepet.utils.ContextHolder;
 import com.cutepet.persistence.entity.store.PetEntity;
 import com.cutepet.persistence.entity.store.StoreEntity;
 import com.cutepet.persistence.repositories.store.PetInStoreRepository;
@@ -11,25 +10,25 @@ import java.util.List;
 
 public class Store {
 
-    private final long storeId;
-
+    @Autowired
+    StoreRepository storeRepository;
     @Autowired
     PetInStoreRepository petRepository;
 
-    public Store(long id) {
-        this.storeId = id;
+    public List<StoreEntity> getAllStores() {
+        return storeRepository.findAll();
     }
 
-    public static List<StoreEntity> getAllStores() {
-        return ContextHolder.getContext().getBean(StoreRepository.class).findAll();
+    public StoreEntity getStore(Long storeId) {
+        return storeRepository.findById(storeId).get(0);
     }
 
-    public List<PetEntity> getPets() {
-        return petRepository.findByStoreId(storeId);
+    public List<PetEntity> getAllPetsInStore(StoreEntity storeEntity) {
+        return petRepository.findByStoreId(storeEntity.getId());
     }
 
 
-    public PetEntity getPet(long pet_id) {
-        return petRepository.findByIdAndStoreId(pet_id, storeId);
+    public PetEntity getPetInStore(StoreEntity storeEntity, Long pet_id) {
+        return petRepository.findByIdAndStoreId(pet_id, storeEntity.getId());
     }
 }
