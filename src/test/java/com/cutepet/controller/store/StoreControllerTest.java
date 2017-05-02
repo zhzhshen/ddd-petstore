@@ -1,9 +1,11 @@
 package com.cutepet.controller.store;
 
+import com.cutepet.domain.store.Store;
+import com.cutepet.persistence.entity.store.StoreEntity;
 import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.http.MediaType;
@@ -20,8 +22,10 @@ public class StoreControllerTest {
 
     private MockMvc mvc;
 
-    @Mock
+    @InjectMocks
     private StoreController storeController;
+    @Mock
+    private Store store;
 
     @Before
     public void setup() {
@@ -31,13 +35,14 @@ public class StoreControllerTest {
 
     @Test
     public void should_able_get_all_stores() throws Exception {
-        when(storeController.getAllStores()).thenReturn(ImmutableMap.of("data",
-                ImmutableList.of(ImmutableMap.of("name", "Dogy"))));
+
+        when(store.getAllStores()).thenReturn(
+                ImmutableList.of(new StoreEntity("Doggy"), new StoreEntity("Catty")));
 
         mvc.perform(get("/stores"))
             .andDo(print())
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8))
-            .andExpect(jsonPath("$.data[0].name", is("Dogy")));
+            .andExpect(jsonPath("$.data[0].name", is("Doggy")));
     }
 }
