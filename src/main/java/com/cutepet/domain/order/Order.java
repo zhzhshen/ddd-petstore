@@ -14,8 +14,9 @@ public class Order {
     public Order() {
     }
 
-    public void createOrder(OrderEntity orderEntity) {
+    public boolean createOrder(OrderEntity orderEntity) {
         orderRepository.save(orderEntity);
+        return true;
     }
 
     public List<OrderEntity> getAllOrders() {
