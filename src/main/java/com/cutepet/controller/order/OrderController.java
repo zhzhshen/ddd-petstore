@@ -35,7 +35,8 @@ public class OrderController {
                         PaymentMethod.valueOf(petMap.get("payment"))))
         );
         Map<String, String> customerMap = (Map) orderData.get("customer");
-        OrderEntity orderEntity = new OrderEntity(new Date(), (Long) orderData.get("userId"), pets,
+        Long userId = Long.parseLong((String)orderData.get("userId"));
+        OrderEntity orderEntity = new OrderEntity(new Date(), userId, pets,
                 new CustomerEntity(customerMap.get("name"), customerMap.get("phoneNum")));
         order.createOrder(orderEntity);
 
@@ -50,8 +51,7 @@ public class OrderController {
         List<Map<String, Object>> orderList = new ArrayList<>();
         order.getAllOrders().forEach((orderEntity) -> {
             List<PetEntity> pets = orderEntity.getPets();
-            Map<String, Object> orderMap = Utils.introspect(order);
-            orderMap.put("pets", pets);
+            Map<String, Object> orderMap = Utils.introspect(orderEntity);
             orderList.add(orderMap);
         });
 
