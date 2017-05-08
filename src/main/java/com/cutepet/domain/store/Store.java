@@ -5,9 +5,11 @@ import com.cutepet.persistence.entity.store.StoreEntity;
 import com.cutepet.persistence.repositories.store.PetInStoreRepository;
 import com.cutepet.persistence.repositories.store.StoreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@Component
 public class Store {
 
     @Autowired
