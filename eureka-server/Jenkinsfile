@@ -1,0 +1,28 @@
+def srvName = 'petstore-eureka-server'
+def gitRepo = 'https://github.com/linfan/ddd-petstore.git'
+def devHost = '10.202.128.102'
+def registryUrl = '10.202.128.102:5000'
+node('microservice') {
+    stage('代码更新') {
+        checkout scm: [$class: 'GitSCM', branches: [[name: '*/master']], 
+                      userRemoteConfigs: [[url: gitRepo]]]
+    }
+    stage('构建代码') {
+        sh 'mvn clean package'
+    }
+    stage('创建镜像') {
+        sh "mv -f target/*.jar deployment/${srvName}.jar"
+        sh "docker build -t ${registryUrl}/${srvName}:$BUILD_NUMBER deployment"
+        sh "docker push ${registryUrl}/${srvName}:$BUILD_NUMBER"
+        sh "docker rmi ${registryUrl}/${srvName}:$BUILD_NUMBER"
+    }
+    stage('部署Dev环境') {
+        sh "ssh root@${devHost} docker rm -f ${srvName} | true"
+        sh "ssh root@${devHost} docker run -d --name ${srvName} --net=host \
+            --add-host=master:10.71.203.76 --add-host=slave:10.71.202.88 \
+            ${registryUrl}/${srvName}:$BUILD_NUMBER \
+            java -jar /lib/app.jar --spring.profiles.active=master"
+        sh "ssh root@${devHost} docker image prune --force --all \
+            --filter until=`date -d '5 day ago' '+%F'`"
+    }
+}
