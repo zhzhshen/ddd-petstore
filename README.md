@@ -1,4 +1,4 @@
-# Pet Store for DDD Workshop
+# Pet Store for DDD Kata
 
 ### 练习步骤
 - 熟悉练习材料
@@ -9,5 +9,8 @@
 - 输出API模型
 - 实现API功能
 
-### 参考模型
-![Model](model.png)
+### 参考领域模型
+![Model](_image/model.png)
+
+### 参考架构分层
+![Layer](_image/layer.png)

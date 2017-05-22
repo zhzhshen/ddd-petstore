@@ -1,0 +1,31 @@
+spring:
+  application:
+    name: order-service
+  profiles:
+    active: local
+
+server:
+  port: 8081
+
+eureka:
+  instance:
+    leaseRenewalIntervalInSeconds: 10
+    leaseExpirationDurationInSeconds: 30
+    healthcheck:
+      enabled: true
+
+---
+spring:
+  profiles: local
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
+---
+spring:
+  profiles: dev
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://eureka-server:8761/eureka/
