@@ -1,4 +1,4 @@
-# eureka-server
+# eureka-service
 提供集群的注册发现服务
 
 ## 服务地址
