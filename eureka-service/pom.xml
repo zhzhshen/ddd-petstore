@@ -9,7 +9,7 @@
         <version>0.0.3-SNAPSHOT</version>
         <relativePath>..</relativePath>
     </parent>
-    <artifactId>eureka-server</artifactId>
+    <artifactId>eureka-service</artifactId>
 
     <dependencies>
         <dependency>
