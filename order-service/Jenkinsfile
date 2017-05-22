@@ -1,0 +1,31 @@
+def srvName = 'order-service'
+def gitRepo = 'https://github.com/linfan/ddd-petstore.git'
+def devUser = 'scaleworks'
+def devHost = '10.202.128.102'
+def registryUrl = '10.202.128.102:5000'
+node('microservice') {
+    stage('代码更新') {
+        checkout scm: [$class: 'GitSCM', branches: [[name: '*/master']], 
+                      userRemoteConfigs: [[url: gitRepo]]]
+    }
+    dir(srvName) {
+        stage('构建代码') {
+            sh 'mvn clean package'
+        }
+        stage('创建镜像') {
+            sh "mv -f target/*.jar deployment/${srvName}.jar"
+            sh "docker build -t ${registryUrl}/${srvName}:$BUILD_NUMBER deployment"
+            sh "docker push ${registryUrl}/${srvName}:$BUILD_NUMBER"
+            sh "docker rmi ${registryUrl}/${srvName}:$BUILD_NUMBER"
+        }
+    }
+}
+node('master') {
+    stage('部署Dev环境') {
+        sh "ssh ${devUser}@${devHost} docker rm -f ${srvName} | true"
+        sh "ssh ${devUser}@${devHost} docker run -d --name ${srvName} --net=host \
+            ${registryUrl}/${srvName}:$BUILD_NUMBER"
+        sh "ssh ${devUser}@${devHost} docker image prune --force --all \
+            --filter until=`date -d '5 day ago' '+%F'`"
+    }
+}
