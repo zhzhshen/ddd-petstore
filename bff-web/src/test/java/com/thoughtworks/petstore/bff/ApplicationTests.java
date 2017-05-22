@@ -28,7 +28,7 @@ public class ApplicationTests {
 
 	@Test
 	public void contextLoads() throws Exception {
-		RequestBuilder requestBuilder = get("/hello/test");
+		RequestBuilder requestBuilder = get("/api/hello/test");
 		mvc.perform(requestBuilder).andExpect(status().isOk()).andExpect(content().string("Hello! test"));
 	}
 
