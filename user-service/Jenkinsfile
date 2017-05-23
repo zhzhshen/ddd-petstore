@@ -1,4 +1,4 @@
-def srvName = 'shopping-service'
+def srvName = 'user-service'
 def gitRepo = 'https://github.com/linfan/ddd-petstore.git'
 def devUser = 'scaleworks'
 def devHost = '10.202.128.102'

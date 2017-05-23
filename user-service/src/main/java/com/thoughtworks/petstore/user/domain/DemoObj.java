@@ -1,4 +1,4 @@
-package com.thoughtworks.petstore.shopping.domain;
+package com.thoughtworks.petstore.user.domain;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;

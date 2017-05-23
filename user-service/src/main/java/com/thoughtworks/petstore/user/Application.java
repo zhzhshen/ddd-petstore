@@ -1,4 +1,4 @@
-package com.thoughtworks.petstore.shopping;
+package com.thoughtworks.petstore.user;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -9,7 +9,7 @@
 	    <version>0.0.3-SNAPSHOT</version>
 		<relativePath>..</relativePath>
 	</parent>
-	<artifactId>shopping-service</artifactId>
+	<artifactId>user-service</artifactId>
 
 	<properties>		
 		<swagger2.version>2.5.0</swagger2.version>

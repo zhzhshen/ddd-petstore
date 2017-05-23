@@ -1,4 +1,4 @@
-package com.thoughtworks.petstore.shopping;
+package com.thoughtworks.petstore.user;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
@@ -13,7 +13,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-import com.thoughtworks.petstore.shopping.controller.DemoController;
+import com.thoughtworks.petstore.user.controller.DemoController;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
