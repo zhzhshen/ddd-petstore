@@ -11,12 +11,12 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping(value="/species")
+@RequestMapping(value = "/species")
 public class SpeciesController {
     @Autowired
     SpeciesRepository repository;
 
-    @ApiOperation(value="The API to view species")
+    @ApiOperation(value = "The API to view species")
     @RequestMapping(value = "", method = RequestMethod.GET)
     public List<Species> all() {
         return repository.all();
